@@ -29,7 +29,12 @@ import QualityDashboard from './components/QualityDashboard.tsx';
 
 export default function App() {
   // Auth state
-  const [user, setUser] = useState<User | null>(null);
+ const [user, setUser] = useState<User | null>({
+  id: 'demo-user',
+  name: 'S. Chaitanya',
+  email: 'demo@arenaops.ai',
+  role: 'operator'
+} as User);
   const [loginEmail, setLoginEmail] = useState('sathellychaitanya08@gmail.com');
   const [loginPassword, setLoginPassword] = useState('••••••••');
   const [authError, setAuthError] = useState<string | null>(null);
@@ -99,23 +104,51 @@ export default function App() {
   }, [user]);
 
   const fetchStadiumState = async () => {
-    try {
-      const res = await fetch('/api/stadium/state');
-      if (res.ok) {
-        const data = await res.json();
-        setStadiumState(data);
+  try {
+    setStadiumState({
+      matches: [],
+      zones: [],
+      incidents: [],
+      resources: [],
+      utility: {
+        powerUsageKw: 1450,
+        powerLoadPrediction: 1600,
+        powerLimitKw: 2200,
+        waterGallonsMin: 120,
+        waterLimitGallons: 350,
+        savingModeActive: false,
+        gridStatus: 'normal'
+      },
+      sustainability: {
+        wasteRecycledKg: 1500,
+        foodWasteKg: 120,
+        transitCo2Kg: 32000,
+        energySavedKwh: 420,
+        waterSavedGallons: 900,
+        targetWasteRecycledKg: 2000,
+        targetFoodWasteKg: 200,
+        targetTransitCo2Kg: 50000
       }
-    } catch (e) {
-      console.error('Error fetching stadium state', e);
-    }
-  };
+    } as StadiumState);
+  } catch (e) {
+    console.error(e);
+  }
+};
 
   // Auth handler
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoggingIn(true);
-    setAuthError(null);
+ const handleLogin = async (e: React.FormEvent) => {
+  e.preventDefault();
 
+  const demoUser = {
+    id: 'demo-user',
+    name: 'S. Chaitanya',
+    email: loginEmail,
+    role: 'operator'
+  };
+
+  setUser(demoUser as User);
+  sessionStorage.setItem('arenaops_user', JSON.stringify(demoUser));
+};
     try {
       const res = await fetch('/api/auth/login', {
         method: 'POST',
