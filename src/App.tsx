@@ -381,32 +381,21 @@ export default function App() {
           />
         );
       case 'scheduler':
-  return (
-    <div className="p-6">
-      <h2>Match Scheduler</h2>
-      <p>AI scheduling module operational.</p>
-    </div>
-  );
+        return (
+          <SchedulerView 
+            matches={stadiumState.matches}
+            onAddMatch={handleAddMatch}
+            onAIOptimize={handleAIOptimize}
+            isOptimizing={isSimulating}
+          />
+        );
       case 'crowd':
-  return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold">Crowd Intelligence</h1>
-      <div className="mt-4 grid grid-cols-3 gap-4">
-        <div className="p-4 border rounded-xl">
-          <h3>Gate A</h3>
-          <p>Occupancy: 65%</p>
-        </div>
-        <div className="p-4 border rounded-xl">
-          <h3>Gate B</h3>
-          <p>Occupancy: 42%</p>
-        </div>
-        <div className="p-4 border rounded-xl">
-          <h3>Gate C</h3>
-          <p>Occupancy: 78%</p>
-        </div>
-      </div>
-    </div>
-  );
+        return (
+          <CrowdDashboard 
+            zones={stadiumState.zones}
+            onUpdateZone={handleUpdateZone}
+          />
+        );
       case 'security':
         return (
           <SecurityView 
@@ -432,13 +421,15 @@ export default function App() {
         );
       case 'tournament':
         return <TournamentView />;
-    case 'assistant':
-  return (
-    <div className="p-6">
-      <h2>AI Co-Pilot</h2>
-      <p>Gemini-powered stadium assistant ready.</p>
-    </div>
-  );
+   case 'assistant':
+        return (
+          <AssistantView 
+            chatHistory={chatHistory}
+            onSendMessage={handleSendMessage}
+            onClearHistory={handleClearHistory}
+            isSending={isSendingChat}
+          />
+        );
       case 'testing':
         return <QualityDashboard />;
       default:
