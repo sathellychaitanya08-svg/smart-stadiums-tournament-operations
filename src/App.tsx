@@ -28,7 +28,7 @@ import TournamentView from './components/TournamentView.tsx';
 import QualityDashboard from './components/QualityDashboard.tsx';
 
 export default function App() {
-  const [user, setUser] = useState<User | null>(null);
+  const [authError, setAuthError] = useState<string | null>(null);
 
   const [loginEmail, setLoginEmail] = useState('sathellychaitanya08@gmail.com');
   const [loginPassword, setLoginPassword] = useState('••••••••');
@@ -449,12 +449,6 @@ export default function App() {
               <p className="text-xs text-slate-400 font-mono uppercase tracking-widest mt-1">Smart Stadiums Command Portal</p>
             </div>
           </div>
-
-          {authError && (
-            <div id="login-error" className="p-3 bg-rose-500/10 border border-rose-500/20 text-rose-400 rounded-xl text-xs font-semibold text-center">
-              {authError}
-            </div>
-          )}
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-1">
