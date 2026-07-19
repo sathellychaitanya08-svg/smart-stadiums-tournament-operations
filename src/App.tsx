@@ -28,18 +28,20 @@ import TournamentView from './components/TournamentView.tsx';
 import QualityDashboard from './components/QualityDashboard.tsx';
 
 export default function App() {
-  // Auth state
- const [user, setUser] = useState<User | null>({
-  id: 'demo-user',
-  name: 'S. Chaitanya',
-  email: 'demo@arenaops.ai',
-  role: 'operator'
-} as User);
+  const [user, setUser] = useState<User | null>({
+    id: 'demo-user',
+    name: 'S. Chaitanya',
+    email: 'demo@arenaops.ai',
+    role: 'operator'
+  } as User);
+
   const [loginEmail, setLoginEmail] = useState('sathellychaitanya08@gmail.com');
   const [loginPassword, setLoginPassword] = useState('••••••••');
-  const [authError, setAuthError] = useState<string | null>(null);
-  const [isLoggingIn, setIsLoggingIn] = useState(false);
 
+  const handleLogout = () => {
+    setUser(null);
+    sessionStorage.removeItem('arenaops_user');
+  };
   // Tab routing state
   const [activeTab, setActiveTab] = useState('dashboard');
 
