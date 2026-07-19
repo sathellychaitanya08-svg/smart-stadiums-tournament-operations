@@ -565,23 +565,47 @@ export default function App() {
         ` : ''}
       `}</style>
 
-      <Sidebar 
-        activeTab={activeTab} 
-        setActiveTab={setActiveTab} 
-        user={user} 
-        onLogout={handleLogout}
-        stadiumState={stadiumState || { matches: [], zones: [], incidents: [], resources: [], utility: { powerUsageKw: 0, powerLoadPrediction: 0, powerLimitKw: 2200, waterGallonsMin: 0, waterLimitGallons: 350, savingModeActive: false, gridStatus: 'normal' }, sustainability: { wasteRecycledKg: 0, foodWasteKg: 0, transitCo2Kg: 0, energySavedKwh: 0, waterSavedGallons: 0, targetWasteRecycledKg: 2000, targetFoodWasteKg: 200, targetTransitCo2Kg: 50000 } }}
-        onSimulateTick={triggerSimulationTick}
-        isSimulating={isSimulating}
-        highContrast={highContrast}
-        setHighContrast={setHighContrast}
-        textScale={textScale}
-        setTextScale={setTextScale}
-        focusIndicators={focusIndicators}
-        setFocusIndicators={setFocusIndicators}
-        voiceNarration={voiceNarration}
-        setVoiceNarration={setVoiceNarration}
-      />
+      <Sidebar
+  activeTab={activeTab}
+  setActiveTab={setActiveTab}
+  user={user}
+  onLogout={handleLogout}
+  stadiumState={stadiumState || {
+    matches: [],
+    zones: [],
+    incidents: [],
+    resources: [],
+    utility: {
+      powerUsageKw: 0,
+      powerLoadPrediction: 0,
+      powerLimitKw: 2200,
+      waterGallonsMin: 0,
+      waterLimitGallons: 350,
+      savingModeActive: false,
+      gridStatus: 'normal'
+    },
+    sustainability: {
+      wasteRecycledKg: 0,
+      foodWasteKg: 0,
+      transitCo2Kg: 0,
+      energySavedKwh: 0,
+      waterSavedGallons: 0,
+      targetWasteRecycledKg: 2000,
+      targetFoodWasteKg: 200,
+      targetTransitCo2Kg: 50000
+    }
+  }}
+  onSimulateTick={triggerSimulationTick}
+  isSimulating={isSimulating}
+  highContrast={highContrast}
+  setHighContrast={setHighContrast}
+  textScale={textScale}
+  setTextScale={setTextScale}
+  focusIndicators={focusIndicators}
+  setFocusIndicators={setFocusIndicators}
+  voiceNarration={voiceNarration}
+  setVoiceNarration={setVoiceNarration}
+/>
 
       <main id="view-portal" className="flex-1 overflow-y-auto h-screen p-8 bg-slate-50 dark:bg-slate-950">
         {renderCurrentView()}
