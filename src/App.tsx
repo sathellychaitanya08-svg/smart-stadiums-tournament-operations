@@ -28,6 +28,8 @@ import TournamentView from './components/TournamentView.tsx';
 import QualityDashboard from './components/QualityDashboard.tsx';
 
 export default function App() {
+  const [user, setUser] = useState<User | null>(null);
+
   const [authError, setAuthError] = useState<string | null>(null);
 
   const [loginEmail, setLoginEmail] = useState('sathellychaitanya08@gmail.com');
@@ -36,8 +38,7 @@ export default function App() {
   const handleLogout = () => {
     setUser(null);
     sessionStorage.removeItem('arenaops_user');
-  };
-  // Tab routing state
+  };  // Tab routing state
   const [activeTab, setActiveTab] = useState('dashboard');
 
   // Stadium metrics state synchronized with express server
