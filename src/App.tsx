@@ -149,31 +149,6 @@ export default function App() {
   setUser(demoUser as User);
   sessionStorage.setItem('arenaops_user', JSON.stringify(demoUser));
 };
-    try {
-      const res = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: loginEmail, password: 'password' })
-      });
-
-      if (res.ok) {
-        const data = await res.json();
-        setUser(data.user);
-        sessionStorage.setItem('arenaops_user', JSON.stringify(data.user));
-      } else {
-        setAuthError('Authentication rejected. Please check email address credentials.');
-      }
-    } catch (err) {
-      setAuthError('Error reaching authentication servers.');
-    } finally {
-      setIsLoggingIn(false);
-    }
-  };
-
-  const handleLogout = () => {
-    setUser(null);
-    sessionStorage.removeItem('arenaops_user');
-  };
 
   // Simulation tick progression handler
   const triggerSimulationTick = async () => {
