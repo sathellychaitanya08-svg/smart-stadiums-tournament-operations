@@ -28,12 +28,7 @@ import TournamentView from './components/TournamentView.tsx';
 import QualityDashboard from './components/QualityDashboard.tsx';
 
 export default function App() {
-  const [user, setUser] = useState<User | null>({
-    id: 'demo-user',
-    name: 'S. Chaitanya',
-    email: 'demo@arenaops.ai',
-    role: 'operator'
-  } as User);
+  const [user, setUser] = useState<User | null>(null);
 
   const [loginEmail, setLoginEmail] = useState('sathellychaitanya08@gmail.com');
   const [loginPassword, setLoginPassword] = useState('••••••••');
