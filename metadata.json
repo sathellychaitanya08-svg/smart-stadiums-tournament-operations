@@ -1,0 +1,6 @@
+{
+  "name": "Smart Stadiums & Tournament Operations",
+  "description": "An enterprise-grade smart stadiums and tournament operations center featuring AI-assisted scheduling, crowd analytics, risk predictive monitoring, resource optimization, sustainability dashboards, and a live Gemini-powered operations assistant.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
